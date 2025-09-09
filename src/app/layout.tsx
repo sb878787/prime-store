@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+import Layout from '@/components/Layout';
+
 export const metadata: Metadata = {
   title: {
     default: 'Prime Store',
-    template: 'Prime Store | %s'
+    template: 'Prime Store | %s',
   },
-  description: 'Professional portfolio project: Modern e-commerce starter built with Next.js 15, React 19, TypeScript, and Tailwind CSS.',
+  description:
+    'Professional portfolio project: Modern e-commerce starter built with Next.js 15, React 19, TypeScript, and Tailwind CSS.',
 };
 
 export default function RootLayout({
@@ -16,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
