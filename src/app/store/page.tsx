@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import ProductItem from '@/components/ProductItem';
 
@@ -61,7 +62,9 @@ const StorePage = () => {
 
       <div className="grid grid-cols-4 gap-6">
         {data.map((item) => (
-          <ProductItem key={item.id} {...item} />
+          <Link key={item.id} href={`/store/product/${item.id}`}>
+            <ProductItem {...item} />
+          </Link>
         ))}
       </div>
     </>
