@@ -14,14 +14,20 @@ interface IProductProps {
 const Product = async ({ params }: IProductProps) => {
   const { id } = await params;
 
-  const result = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const result = await fetch(`https://fakestoreapi.com/products/${id}`, { cache: 'no-store' });
   const data = (await result.json()) as IProductItemProps;
 
   return (
     <Container>
       <div className="grid grid-cols-12 mt-8 shadow-md">
         <div className="col-span-3">
-          <Image src={data.image} alt="ProductImage" className='w-full h-56 object-cover object-center' />
+          <Image
+            src={data.image}
+            alt={data.title}
+            width={800}
+            height={800}
+            className="w-full h-56 object-cover object-center"
+          />
         </div>
 
         <div className="col-span-9 p-4">
