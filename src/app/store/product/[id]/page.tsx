@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 // Components
 import Container from '@/components/Container';
+import AddToCart from '@/components/AddToCart';
 
 // Types
 import { IProductItemProps } from '@/types/ProductItemType';
@@ -36,11 +37,8 @@ const Product = async ({ params }: IProductProps) => {
           <p className="font-bold">
             price: <span>{data.price}$</span>
           </p>
-          <div className="mt-4">
-            <button className="px-4 py-2 rounded bg-sky-500 text-white">+</button>
-            <span className="mx-4">2</span>
-            <button className="px-4 py-2 rounded bg-sky-500 text-white">-</button>
-          </div>
+
+          <AddToCart />
         </div>
       </div>
     </Container>

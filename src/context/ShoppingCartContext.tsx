@@ -11,7 +11,11 @@ type TCartItem = {
   quantity: number;
 };
 
-const ShoppingCartContext = createContext({});
+type TShoppingCartContext = {
+  cartItems: TCartItem[];
+}
+
+export const ShoppingCartContext = createContext({} as TShoppingCartContext);
 
 export function ShoppingCartContextProvider({ children }: TShoppingCartContextProviderProps) {
   const [cartItems, setCartItems] = useState<TCartItem[]>([]);
