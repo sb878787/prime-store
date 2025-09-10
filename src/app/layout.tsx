@@ -1,7 +1,14 @@
+// Next Imports
 import type { Metadata } from 'next';
+
+// Styles
 import './globals.css';
 
+// Components
 import Layout from '@/components/Layout';
+
+// Context
+import { ShoppingCartContextProvider } from '@/context/ShoppingCartContext';
 
 export const metadata: Metadata = {
   title: {
@@ -20,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout>{children}</Layout>
+        <ShoppingCartContextProvider>
+          <Layout>{children}</Layout>
+        </ShoppingCartContextProvider>
       </body>
     </html>
   );
