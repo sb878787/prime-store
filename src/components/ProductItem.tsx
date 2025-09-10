@@ -1,18 +1,16 @@
-interface IProductItemProps {
-  id: string;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-}
+// Next Imports
+import Image from "next/image";
+
+// Types
+import { IProductItemProps } from "@/types/ProductItemType";
 
 const ProductItem = ({ image, title, price }: IProductItemProps) => {
   return (
     <div className="shadow-md">
-      <img src={image} alt="ProductImage" className="w-full h-48 object-cover object-center" />
+      <Image src={image} alt="ProductImage" className="w-full h-48 object-cover object-center" />
 
       <div className="p-2">
-        <h3 className="font-bold">{title}</h3>
+        <h3 className="font-bold line-clamp-1 w-full">{title}</h3>
         <p>
           price: <span>{price}$</span>
         </p>

@@ -1,8 +1,10 @@
 'use client';
 
+// Next Imports
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// Components
 import Container from './Container';
 
 const Navbar = () => {
