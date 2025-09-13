@@ -38,7 +38,7 @@ const Product = async ({ params }: IProductProps) => {
             price: <span>{data.price}$</span>
           </p>
 
-          <AddToCart />
+          <AddToCart id={id} />
         </div>
       </div>
     </Container>
