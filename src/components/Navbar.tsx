@@ -44,8 +44,12 @@ const Navbar = () => {
           </div>
 
           <div>
-            <Link href="/cart" className='flex relative'>
-              <span className='absolute top-0 right-0 text-[12px] px-[4px] bg-red-500 text-white rounded-full'>{cartTotalQty}</span>
+            <Link href="/cart" className="flex relative">
+              {cartTotalQty > 0 && (
+                <span className="absolute top-0 right-0 text-[12px] px-[4px] bg-red-500 text-white rounded-full">
+                  {cartTotalQty}
+                </span>
+              )}
               <CartIcon size={32} />
             </Link>
           </div>
