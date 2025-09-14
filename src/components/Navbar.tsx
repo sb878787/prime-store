@@ -8,8 +8,13 @@ import { usePathname } from 'next/navigation';
 import Container from './Container';
 import CartIcon from './icons/CartIcon';
 
+// Contexts
+import { useShoppingCartContext } from '@/Hooks/useShoppingCartContext';
+
 const Navbar = () => {
   const pathname = usePathname();
+
+  const { cartTotalQty } = useShoppingCartContext();
 
   const navLinks = [
     {
@@ -39,8 +44,9 @@ const Navbar = () => {
           </div>
 
           <div>
-            <Link href='/cart'>
-              <CartIcon />
+            <Link href="/cart" className='flex relative'>
+              <span className='absolute top-0 right-0 text-[12px] px-[4px] bg-red-500 text-white rounded-full'>{cartTotalQty}</span>
+              <CartIcon size={32} />
             </Link>
           </div>
         </div>
