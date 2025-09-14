@@ -1,5 +1,5 @@
 // Components
-import CartItem from '@/components/CartItem';
+import CartItemList from '@/components/CartItemList';
 import Container from '@/components/Container';
 
 const Cart = () => {
@@ -7,9 +7,7 @@ const Cart = () => {
     <Container>
       <h1 className="my-4">Cart</h1>
 
-      <div>
-        <CartItem />
-      </div>
+      <CartItemList />
 
       <div className="border shadow-md p-4">
         <h3 className="text-xl font-bold">
@@ -22,8 +20,8 @@ const Cart = () => {
           Final price: <span>$120</span>
         </h3>
 
-        <div className='mt-3'>
-          <input className='border px-4 py-2' placeholder="Discount code..." type="text" />
+        <div className="mt-3">
+          <input className="border px-4 py-2" placeholder="Discount code..." type="text" />
           <button className="px-4 py-2 rounded bg-sky-500 text-white ml-4">Apply</button>
         </div>
       </div>
