@@ -15,7 +15,7 @@ interface IProductProps {
 const Product = async ({ params }: IProductProps) => {
   const { id } = await params;
 
-  const result = await fetch(`https://fakestoreapi.com/products/${id}`, { cache: 'no-store' });
+  const result = await fetch(`http://localhost:3001/products/${id}`, { cache: 'no-store' });
   const data = (await result.json()) as IProductItemProps;
 
   return (

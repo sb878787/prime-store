@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const StorePage = async () => {
-  const result = await fetch('https://fakestoreapi.com/products', { cache: 'no-store' })
+  const result = await fetch('http://localhost:3001/products', { cache: 'no-store' })
   const data = await result.json() as IProductItemProps[]
 
   return (

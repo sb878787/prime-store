@@ -26,7 +26,7 @@ const CartItem = ({ id, quantity }: ICartItemProps) => {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const res = await fetch(`http://localhost:3001/products/${id}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = (await res.json()) as IProductItemProps;
         if (!cancelled) setData(json);
