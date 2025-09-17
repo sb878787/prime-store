@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 type TShoppingCartContextProviderProps = {
   children: React.ReactNode;
@@ -16,8 +16,8 @@ type TShoppingCartContext = {
   handleIncreaseCartQuantity: (id: number) => void;
   getCartQuantity: (id: number) => number;
   cartTotalQty: number;
-  handleDecreaseCartQuantity: (id: number) => void
-  handleRemoveFromCart: (id: number) => void
+  handleDecreaseCartQuantity: (id: number) => void;
+  handleRemoveFromCart: (id: number) => void;
 };
 
 export const ShoppingCartContext = createContext({} as TShoppingCartContext);
@@ -35,7 +35,7 @@ export function ShoppingCartContextProvider({ children }: TShoppingCartContextPr
 
   const handleIncreaseCartQuantity = (id: number) => {
     setCartItems((prevItems) => {
-      let isNotProductExist = prevItems.find((item) => item.id === id) == null;
+      const isNotProductExist = prevItems.find((item) => item.id === id) == null;
 
       if (isNotProductExist) {
         return [...prevItems, { id, quantity: 1 }];
@@ -53,7 +53,7 @@ export function ShoppingCartContextProvider({ children }: TShoppingCartContextPr
 
   const handleDecreaseCartQuantity = (id: number) => {
     setCartItems((prevItems) => {
-      let isLastOne = prevItems.find((item) => item.id === id)?.quantity === 1;
+      const isLastOne = prevItems.find((item) => item.id === id)?.quantity === 1;
 
       if (isLastOne) {
         return prevItems.filter((item) => item.id !== id);
@@ -72,8 +72,19 @@ export function ShoppingCartContextProvider({ children }: TShoppingCartContextPr
   const handleRemoveFromCart = (id: number) => {
     setCartItems((prevItems) => {
       return prevItems.filter((item) => item.id !== id);
-    })
-  }
+    });
+  };
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <ShoppingCartContext.Provider
@@ -83,7 +94,7 @@ export function ShoppingCartContextProvider({ children }: TShoppingCartContextPr
         getCartQuantity,
         cartTotalQty,
         handleDecreaseCartQuantity,
-        handleRemoveFromCart
+        handleRemoveFromCart,
       }}
     >
       {children}
