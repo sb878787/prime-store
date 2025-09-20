@@ -2,7 +2,8 @@
 
 // Next Imports
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 // Components
 import Container from './Container';
@@ -29,6 +30,10 @@ const Navbar = () => {
       href: '/dashboard',
       title: 'Dashboard',
     },
+    {
+      href: '/login',
+      title: 'Login',
+    },
   ];
 
   return (
@@ -47,7 +52,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div>
+          <div className="flex flex-row-reverse items-center gap-4">
             <Link href="/cart" className="flex relative">
               {cartTotalQty > 0 && (
                 <span className="absolute top-0 right-0 text-[12px] px-[4px] bg-red-500 text-white rounded-full">
@@ -56,6 +61,16 @@ const Navbar = () => {
               )}
               <CartIcon size={32} />
             </Link>
+
+            <button
+              className="text-red-600 cursor-pointer"
+              onClick={() => {
+                Cookies.remove('token');
+                redirect('/login');
+              }}
+            >
+              Logout
+            </button>
           </div>
         </div>
       </Container>
