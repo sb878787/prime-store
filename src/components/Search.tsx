@@ -16,17 +16,18 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center mb-8 gap-4">
+      <button className="bg-sky-500 text-white p-2 rounded cursor-pointer" onClick={handleSearch}>
+        Search
+      </button>
+
       <input
-        className="bg-slate-400"
+        className="bg-slate-200 p-2 rounded outline-none border border-transparent focus:border-sky-500"
         type="text"
         placeholder="search"
         onChange={(e) => setSearch(e.target.value)}
         value={search}
       />
-      <button className="bg-sky-500 text-white p-2 rounded" onClick={handleSearch}>
-        Search
-      </button>
     </div>
   );
 };
